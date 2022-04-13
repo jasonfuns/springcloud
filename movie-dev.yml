@@ -1,0 +1,20 @@
+server:
+  port: 9002
+spring:
+  application:
+    name: microservice-movie
+eureka:
+  client:
+    register-with-eureka: true  #作为客户端注册到Eureka
+    fetch-registry: true        #作为客户端从Eureka获取注册信息
+    service-url:                #客户端注册地址
+      defaultZone: http://127.0.0.1:8888/eureka
+    instance:
+      prefer-ip-address: true   #优先使用该服务的IP地址注册到Eureka
+    registry-fetch-interval-seconds: 5
+  instance:
+    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 10
+feign:
+  hystrix:
+    enabled: true
